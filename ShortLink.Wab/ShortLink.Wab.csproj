@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ShortLink.Infra.Data\ShortLink.Infra.Data.csproj" />
     <ProjectReference Include="..\ShortLink.IoC\ShortLink.IoC.csproj" />
   </ItemGroup>
 

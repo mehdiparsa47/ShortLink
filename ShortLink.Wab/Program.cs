@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using ShortLink.Infra.Data.Context;
 using ShortLink.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
+#region dbcontext
 
+builder.Services.AddDbContext<ShortLinkDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ShortLinkSqlConnection"));
+});
+
+#endregion
 
 
 
