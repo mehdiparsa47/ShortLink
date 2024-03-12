@@ -1,4 +1,4 @@
-﻿using ShortLink.Domain.Interface;
+﻿using ShortLink.Domain.Entities.Account;
 using ShortLink.Domain.Interfaces;
 using ShortLink.Infra.Data.Context;
 
@@ -18,7 +18,19 @@ public class UserRepository : IUserRepository
 
     #endregion
 
+    #region account
 
+    public async Task AddUser(User user)
+    { 
+        await _context.Users.AddAsync(user);
+    }
+
+    public async Task SaveChange()
+    {
+        await _context.SaveChangesAsync();
+    }
+
+    #endregion
 
     #region dispose
     public async ValueTask DisposeAsync()
@@ -28,4 +40,5 @@ public class UserRepository : IUserRepository
     #endregion
 
 
+   
 }

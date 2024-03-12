@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="DTOs\Account\" />
     <Folder Include="Services\Interfaces\" />
     <Folder Include="Services\Implement\" />
   </ItemGroup>
