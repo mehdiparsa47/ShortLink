@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Interfaces\" />
-    <Folder Include="Services\Implement\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ShortLink.Domain\ShortLink.Domain.csproj" />
   </ItemGroup>
 
