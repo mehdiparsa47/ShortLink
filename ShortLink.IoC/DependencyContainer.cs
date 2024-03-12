@@ -1,4 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using ShortLink.Application.Services.Implement;
+using ShortLink.Application.Services.Interfaces;
+using ShortLink.Domain.Interfaces;
+using ShortLink.Infra.Data.Repositories;
 
 namespace ShortLink.IoC;
 
@@ -8,7 +12,7 @@ public static class DependencyContainer
     {
         #region services
 
-
+        services.AddScoped<IUserService, UserService>();
 
 
         #endregion
@@ -16,13 +20,13 @@ public static class DependencyContainer
         #region repository
 
 
-
+        services.AddScoped<IUserRepository, UserRepository>();
 
         #endregion
 
         #region tools
 
-        
+
 
         #endregion
     }

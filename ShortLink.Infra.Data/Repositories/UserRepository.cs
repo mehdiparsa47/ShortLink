@@ -1,4 +1,5 @@
 ﻿using ShortLink.Domain.Interface;
+using ShortLink.Domain.Interfaces;
 using ShortLink.Infra.Data.Context;
 
 namespace ShortLink.Infra.Data.Repositories;

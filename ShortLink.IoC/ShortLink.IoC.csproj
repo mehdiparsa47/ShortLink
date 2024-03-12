@@ -10,4 +10,9 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ShortLink.Application\ShortLink.Application.csproj" />
+    <ProjectReference Include="..\ShortLink.Infra.Data\ShortLink.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>

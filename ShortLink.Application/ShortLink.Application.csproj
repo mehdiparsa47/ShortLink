@@ -11,4 +11,8 @@
     <Folder Include="Services\Implement\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ShortLink.Domain\ShortLink.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
