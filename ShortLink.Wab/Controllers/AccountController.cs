@@ -18,6 +18,7 @@ namespace ShortLink.Wab.Controllers
         #endregion
 
         #region register
+
         [HttpGet("register")]
         public async Task<IActionResult> Register()
         {
@@ -58,7 +59,6 @@ namespace ShortLink.Wab.Controllers
 
 
         #endregion
-
 
         #region logout
 
