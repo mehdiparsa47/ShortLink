@@ -1,4 +1,5 @@
-﻿using ShortLink.Domain.Entities.Account;
+﻿using Microsoft.EntityFrameworkCore;
+using ShortLink.Domain.Entities.Account;
 using ShortLink.Domain.Interfaces;
 using ShortLink.Infra.Data.Context;
 
@@ -24,6 +25,12 @@ public class UserRepository : IUserRepository
     { 
         await _context.Users.AddAsync(user);
     }
+
+    public async Task<bool> IsExistMobile(string mobile)
+    {
+        return await _context.Users.AnyAsync(p => p.Mobile == mobile);
+    }
+
 
     public async Task SaveChange()
     {
