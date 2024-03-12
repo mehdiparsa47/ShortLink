@@ -24,4 +24,8 @@
     <Folder Include="Repositores\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ShortLink.Domain\ShortLink.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
