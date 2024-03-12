@@ -10,4 +10,8 @@
     <ProjectReference Include="..\ShortLink.Domain\ShortLink.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\Account\LoginDto\" />
+  </ItemGroup>
+
 </Project>

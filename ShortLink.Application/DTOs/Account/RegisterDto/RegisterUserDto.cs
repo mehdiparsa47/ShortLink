@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ShortLink.Application.DTOs.Account;
+namespace ShortLink.Application.DTOs.Account.RegisterDto;
 
 public class RegisterUserDto
 {
@@ -24,7 +24,7 @@ public class RegisterUserDto
     [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
     public string Password { get; set; }
 
-    [Display(Name = "کلمه ی عبور")]
+    [Display(Name = "تکرار کلمه عبور")]
     [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
     [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
     [Compare("Password", ErrorMessage = "کلمه ی عبور با هم مغایرت دارند")]

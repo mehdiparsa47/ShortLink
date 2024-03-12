@@ -1,4 +1,5 @@
-﻿using ShortLink.Application.DTOs.Account;
+﻿using ShortLink.Application.DTOs.Account.LoginDto;
+using ShortLink.Application.DTOs.Account.RegisterDto;
 using ShortLink.Application.Services.Interfaces;
 using ShortLink.Domain.Entities.Account;
 using ShortLink.Domain.Interfaces;
@@ -10,10 +11,12 @@ public class UserService : IUserService
     #region ctor
 
     private readonly IUserRepository _userRepository;
+    private readonly IPasswordHelper _passwordHelper;
 
-    public UserService(IUserRepository userRepository)
+    public UserService(IUserRepository userRepository, IPasswordHelper passwordHelper)
     {
         _userRepository = userRepository;
+        _passwordHelper = passwordHelper;
     }
 
     #endregion
@@ -21,7 +24,6 @@ public class UserService : IUserService
     #region account
 
     #region register
-
 
     public async Task<RegisterUserResult> RegisterUser(RegisterUserDto registerUser)
     {
@@ -34,7 +36,8 @@ public class UserService : IUserService
             {
                 FirstName = registerUser.FirstName,
                 LastName = registerUser.LastName,
-                Mobile = registerUser.Mobile,   
+                Mobile = registerUser.Mobile,  
+                Password = _passwordHelper.EncodePasswordMd5(registerUser.Password) ,
                 MobileActiveCode = new Random().Next(10000,99999).ToString(),
                 CreateDate = DateTime.Now,
                 LastUpdateDate = DateTime.Now,
@@ -51,9 +54,20 @@ public class UserService : IUserService
     }
 
 
+
     #endregion
 
+    public async Task<LoginUserResult> LoginUser(LoginUserDto loginUser)
+    {
+        var user = await _userRepository.GetUserByMobile(loginUser.Mobile);
+        if (user == null) return LoginUserResult.NotFound;
+        if (! user.IsMobileActive) return LoginUserResult.NotActivate;
+        if (user.Password != _passwordHelper.EncodePasswordMd5(loginUser.Password)) return LoginUserResult.NotActivate;
 
+
+        return LoginUserResult.Success;
+
+    }
 
     #region login
 

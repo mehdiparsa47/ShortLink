@@ -31,6 +31,11 @@ public class UserRepository : IUserRepository
         return await _context.Users.AnyAsync(p => p.Mobile == mobile);
     }
 
+    public async Task<User> GetUserByMobile(string mobile)
+    {
+        return await _context.Users.SingleOrDefaultAsync(t => t.Mobile == mobile);
+    }
+
 
     public async Task SaveChange()
     {
