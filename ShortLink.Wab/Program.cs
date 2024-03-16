@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using ShortLink.Infra.Data.Context;
 using ShortLink.IoC;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,13 +20,19 @@ builder.Services.AddDbContext<ShortLinkDbContext>(options =>
 #endregion
 
 
+#region Encode
 
+builder.Services.AddSingleton<HtmlEncoder>(
+    HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.All }));
+
+#endregion
 
 #region registerdependencies
 
 DependencyContainer.RegisterService(builder.Services);
 
 #endregion
+
 #endregion
 
 

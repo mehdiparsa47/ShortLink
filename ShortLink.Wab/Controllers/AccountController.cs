@@ -30,7 +30,19 @@ namespace ShortLink.Wab.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                var result = await _userService.RegisterUser(registerUser);
+
+                switch (result)
+                {
+                    case RegisterUserResult.IsMobileExist:
+                        TempData[ErrorMessage] = "تلفن همراه وارد شده تکراری میباشد";
+                        ModelState.AddModelError("Mobile", "تلفن همراه وارد شده تکراری میباشد");
+                        break;
+                    case RegisterUserResult.Success:
+                        TempData[SuccessMessage] = "ثبت نام با موفقیت انجام شد";
+                        return Redirect("/");
+
+                }
             }
             return View(registerUser);
         }
