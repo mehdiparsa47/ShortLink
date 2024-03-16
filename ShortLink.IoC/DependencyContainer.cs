@@ -26,7 +26,7 @@ public static class DependencyContainer
 
         #region tools
 
-
+        services.AddScoped<IPasswordHelper, PasswordHelper>();
 
         #endregion
     }
